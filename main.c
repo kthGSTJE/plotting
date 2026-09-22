@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define COMMAND_LENGTH 100
+#define COMMAND_LENGTH 255
 
 typedef struct PlotSettings
 {
