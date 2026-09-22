@@ -2,30 +2,30 @@
 
 #define COMMAND_LENGTH 100
 
-typedef struct GnuCommands
+typedef struct GnuSettings
 {
     char title[COMMAND_LENGTH];
     char xLabel[COMMAND_LENGTH];
     char yLabel[COMMAND_LENGTH];
     char plot[COMMAND_LENGTH];
-} Gnu;
+} GnuSet;
 
 int main(void) {
-    Gnu gnuCommands = {
-        .title = "set title \"Demo\"",
+    GnuSet plotSettings = {
+        .title = "set title \"Serious Head Injuries\"",
         .xLabel = "set xlabel \"Time\"",
         .yLabel = "set ylabel \"Force\"",
-        .plot = "plot 'measurements.txt' with lines"
+        .plot = "plot 'measurements.txt' with lines tit 'This is our graph'"
     };
 
     FILE *gnupipe = NULL;
     gnupipe = _popen("gnuplot -persistent", "w");
 
     //Execute gnucommands
-    fprintf(gnupipe, "%s\n", gnuCommands.title);
-    fprintf(gnupipe, "%s\n", gnuCommands.xLabel);
-    fprintf(gnupipe, "%s\n", gnuCommands.yLabel);
-    fprintf(gnupipe, "%s\n", gnuCommands.plot);
+    fprintf(gnupipe, "%s\n", plotSettings.title);
+    fprintf(gnupipe, "%s\n", plotSettings.xLabel);
+    fprintf(gnupipe, "%s\n", plotSettings.yLabel);
+    fprintf(gnupipe, "%s\n", plotSettings.plot);
 
     return 0;
 }
